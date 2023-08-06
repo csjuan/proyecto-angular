@@ -1,0 +1,48 @@
+<div class="tabla">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> id </th>
+          <td mat-cell *matCellDef="let profesores"> {{profesores.id}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> nombre </th>
+          <td mat-cell *matCellDef="let profesores"> {{profesores.name }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="apellido">
+            <th mat-header-cell *matHeaderCellDef> apellido </th>
+            <td mat-cell *matCellDef="let profesores"> {{profesores.apellido}} </td>
+          </ng-container>
+         
+        
+        <ng-container matColumnDef="direccion">
+          <th mat-header-cell *matHeaderCellDef> direccion </th>
+          <td mat-cell *matCellDef="let profesores"> {{profesores.direccion}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> email </th>
+          <td mat-cell *matCellDef="let profesores"> {{profesores.email}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef> editar </th>
+            <td mat-cell *matCellDef="let profesores">
+                <button (click)="editprofesor.emit(profesores)" mat-icon-button>    
+                    <mat-icon>edit</mat-icon>
+                   </button>
+               <button (click)="quitarprofesor.emit(profesores)" mat-icon-button>    
+                <mat-icon>delete</mat-icon>
+               </button>
+            </td>   
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+     
+    
+
+</div>

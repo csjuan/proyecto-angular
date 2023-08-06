@@ -1,0 +1,11 @@
+<button  (click)="crearUsers()" mat-fab extended color="primary" >
+    + Alumnos
+  </button>
+
+  <app-table 
+  [dataSource]="(alumnos | async) || []"
+  (quitaralumno)="borraralumno($event)"
+  (editalumno)="editaralumno($event)">
+    </app-table>
+  
+  

@@ -1,0 +1,10 @@
+
+<button  (click)="crearCurso()" mat-fab extended color="primary" >
+    + cursos
+  </button>
+  <app-tabla-curso 
+  [dataSource]="(cursos | async) || []"
+  (quitarcurso)="borrarCurso($event)"
+  (editcurso)="editarCurso($event)">
+  >
+</app-tabla-curso>

@@ -1,0 +1,8 @@
+<button (click)="crearProfe()"  mat-fab extended color="primary" >
+    + profesores
+  </button>
+  <app-tabla-profesor 
+  [dataSource]="(profesores | async) || []"
+  (quitarprofesor)="borrarprofesor($event)"
+  (editprofesor)="editarProfesor($event)">
+  </app-tabla-profesor>
