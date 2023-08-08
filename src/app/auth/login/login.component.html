@@ -1,0 +1,18 @@
+<h1>login</h1>
+<div class="grid">
+    <div class="col-12">
+        <mat-form-field class="w-full">
+            <mat-label>email</mat-label>
+            <input [formControl]="emailControl" matInput/>
+        </mat-form-field>
+    </div>
+    <div class="col-12">
+        <mat-form-field class="w-full">
+            <mat-label>contraseña</mat-label>
+            <input [formControl]="passwordControl" type="password" matInput/>
+        </mat-form-field>
+    </div>
+    <div class="col-12 flex justify-content-end">
+       <button (click)="login()" mat-button>ingresar</button>
+    </div> 
+</div>

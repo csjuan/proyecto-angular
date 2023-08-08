@@ -7,27 +7,30 @@ import { UsersCrearUsuarioComponent } from './components/users-crear-usuario/use
 import { TableComponent } from './components/table/table.component';
 import { UsersService } from 'src/app/core/services/users.service';
 import { UserMockService } from 'src/app/core/mocks/user-mock.service';
+import { UsersRoutingModule } from './users-routing.module';
+import { DetalleComponent } from './components/detalle/detalle.component';
+
 
 
 @NgModule({
   declarations: [
     UsersComponent,
     UsersCrearUsuarioComponent,
-    TableComponent
+    TableComponent,
+    DetalleComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     MatFormFieldModule,
+    UsersRoutingModule,
+
   ],
   exports: [
     UsersComponent
   ],
   providers: [
-    {
-        provide: UsersService,
-        useClass: UserMockService,
-    }
+   
   ]
 })
 export class UsersModule { }

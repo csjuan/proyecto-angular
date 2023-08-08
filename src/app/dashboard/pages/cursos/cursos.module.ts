@@ -4,6 +4,7 @@ import { CursosComponent } from './cursos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CrearCursoComponent } from './crear-curso/crear-curso.component';
 import { TablaCursoComponent } from './tabla-curso/tabla-curso.component';
+import { CursosRountingModule } from './cursos-routing.module';
 
 
 
@@ -16,7 +17,8 @@ import { TablaCursoComponent } from './tabla-curso/tabla-curso.component';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    CursosRountingModule, 
   ],
   exports: [
     CursosComponent

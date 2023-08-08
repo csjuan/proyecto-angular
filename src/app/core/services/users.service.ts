@@ -1,83 +1,55 @@
 import { Injectable } from '@angular/core';
 import { alumnos, data } from '../../dashboard/pages/users/components/modelos';
-import { BehaviorSubject, Observable, Subject, of, take } from 'rxjs';
+import { BehaviorSubject, Subject, map, mergeMap,  take } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
-
-const users_: Observable<alumnos[]> = of([
-    {
-        id: 1,
-        name: 'jose',
-        apellido: 'gauna',
-        direccion: 'colon 237',
-        email:'gauna@gmail.com',
-        password: '451f51dvb',  
-    },
-    {
-        id: 2,
-        name: 'marcos',
-        apellido: 'peña',
-        direccion: 'charcas 237',
-        email:'marpeña@gmail.com',
-        password: 'gfdg654745',  
-    },
-    {
-        id: 3,
-        name: 'rodrigo',
-        apellido: 'sanchez',
-        direccion:'alem 765',
-        email:'rosanchez@gmail.com' ,
-        password: 'jskcyhfdc5',  
-    },
-    {
-        id: 4,
-        name: 'alberto',
-        apellido: 'bocetti',
-        direccion: 'lima 125',
-        email:'bocetti@gmail.com' ,
-        password: 'jkcvasicvbn',  
-    },
-
-]);
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-    public usuarios$ = new BehaviorSubject<alumnos[]>([]);
+    private _usuarios$ = new BehaviorSubject<alumnos[]>([]);
+    private usuarios$ = this._usuarios$.asObservable();
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   cargarUsuarios(): void {
-    users_.subscribe({
-        next:(usuariosDeUsers_) =>this.usuarios$.next(usuariosDeUsers_)
+    this.httpClient.get<alumnos[]>('http://localhost:3000/alumnos').subscribe({
+        next:(respuesta) => {
+            this._usuarios$.next(respuesta);
+        } 
     })
-    
   }
 
   getAlumno(): Subject<alumnos[]>{
-    return this.usuarios$;
+    return this._usuarios$;
   }
+
   crearUsuario( alumno: data): void{
-    this.usuarios$.pipe(take(1)).subscribe({
-        next: (newArray) => {
-            this.usuarios$.next([...newArray, {...alumno, id: newArray.length + 1 },
-            ]);
-        }
-    })
+   this.httpClient.post<alumnos>('http://localhost:3000/alumnos', alumno).pipe(
+    mergeMap(usuarioCreado =>  this.usuarios$.pipe(
+        take(1),
+        map((arrayActual) => [...arrayActual, usuarioCreado])
+    ))
+   )
+   .subscribe({
+    next: (arrayActualizado) => {
+        this._usuarios$.next(arrayActualizado);
+    }
+   })
   }
+
   EditUser(id:number, NewData: alumnos): void{
-    this.usuarios$.pipe(take(1)).subscribe({
-        next: (newArray) => {
-            this.usuarios$.next(newArray.map((user)=> user.id === id ? {...user, ...NewData}: user)
-            );
-        },
-    }); 
+    this.httpClient.put('http://localhost:3000/alumnos/' + id, NewData)
+     .subscribe({ next:() => this.cargarUsuarios(),
+   })
   }
+
   BorrarUser(id: number):void    {
-    this.usuarios$.pipe(take(1)).subscribe({
-      next: (newArray) => 
-        this.usuarios$.next(newArray.filter((us) => us.id !== id)),  
-    });
+    this.httpClient.delete('http://localhost:3000/alumnos/' + id)
+    .pipe()
+     .subscribe({ next:() => this.cargarUsuarios(),
+   })
   }
 }
  

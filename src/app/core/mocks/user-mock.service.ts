@@ -6,7 +6,7 @@ import { alumnos, data } from 'src/app/dashboard/pages/users/components/modelos'
   const users_: Observable<alumnos[]> = of([
     {
         id: 1,
-        name: 'fake-jose',
+        name: 'fake-gitjose',
         apellido: 'gauna',
         direccion: 'colon 237',
         email:'gauna@gmail.com',

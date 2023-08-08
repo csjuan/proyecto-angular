@@ -41,7 +41,7 @@ export class UsersComponent {
         },       
    });
    } 
-   borraralumno(borraralumno: alumnos): void {
+   Borraralumno(borraralumno: alumnos): void {
     if(confirm(`desea eliminar a ${borraralumno.name}?`)){
       this.userService.BorrarUser(borraralumno.id) ;
     }

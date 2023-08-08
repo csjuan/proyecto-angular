@@ -26,10 +26,13 @@
             <th mat-header-cell *matHeaderCellDef> editar </th>
             <td mat-cell *matCellDef="let element">
                 <button (click)="editalumno.emit(element)" mat-icon-button>    
-                    <mat-icon>edit</mat-icon>
+                    <mat-icon>draw</mat-icon>
+                </button>
+                <button [routerLink]="element.id" mat-icon-button>    
+                    <mat-icon>visibility</mat-icon>
                    </button>
                <button (click)="quitaralumno.emit(element)" mat-icon-button>    
-                <mat-icon>delete</mat-icon>
+                <mat-icon>delete sweep</mat-icon>
                </button>
             </td>    
           </ng-container>

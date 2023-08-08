@@ -4,6 +4,7 @@ import { ProfesoresComponent } from './profesores.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CrearProfesorComponent } from './crear-profesor/crear-profesor.component';
 import { TablaProfesorComponent } from './tabla-profesor/tabla-profesor.component';
+import { ProfesoresRoutingModule } from './profesores-routing.module';
 
 
 
@@ -15,7 +16,8 @@ import { TablaProfesorComponent } from './tabla-profesor/tabla-profesor.componen
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    ProfesoresRoutingModule,
   ],
   exports:[
     ProfesoresComponent

@@ -34,7 +34,7 @@ export class CursosComponent {
      this.MatDialog.open(CrearCursoComponent).afterClosed().subscribe({
         next: (v) => {
             this.cursosService.crearCurso({
-                curso: v.curso,
+                curso: v.cursos,
                 duracion: v.duracion,
                 dificultad: v.dificultad,      
        })
