@@ -36,6 +36,7 @@ import { MatListModule } from '@angular/material/list';
     ErrorPipe,
     FontDirective,
     MatListModule,
+    
   ]
 })
 export class SharedModule { }
