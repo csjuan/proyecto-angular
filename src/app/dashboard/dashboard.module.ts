@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { CursosModule } from './pages/cursos/cursos.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { HomeModule } from './pages/home/home.module';
+import { AlumnosModule } from './pages/alumnos/alumnos.module';
+import { ClasesModule } from './pages/clases/clases.module';
 
 
 
@@ -21,6 +23,8 @@ import { HomeModule } from './pages/home/home.module';
     SharedModule,
     UsersModule,
     CursosModule,
+    AlumnosModule,
+    ClasesModule,
     ProfesoresModule,
     HomeModule,
     RouterModule,

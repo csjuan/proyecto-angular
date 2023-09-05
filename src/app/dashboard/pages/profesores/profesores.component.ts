@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProfesoresService } from 'src/app/core/services/profesores.service';
 import { profesores } from '.';
 import { Observable, map } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { selecAdmin } from 'src/app/store/auth/auth.selectors';
 
 
 @Component({
@@ -13,19 +15,22 @@ import { Observable, map } from 'rxjs';
 })
 export class ProfesoresComponent {
     public profesores: Observable<profesores[]>;
+    public selecAdmin: Observable<boolean>;
 
 
     constructor(
         private MatDialog: MatDialog,
-        private profesorsService: ProfesoresService
-    ) {
+        private profesorsService: ProfesoresService,
+        private store: Store,
+    ) { 
+        this.selecAdmin = this.store.select(selecAdmin);
         this.profesorsService.cargarProfesor();
         this.profesores = this.profesorsService.getProfesor().pipe(
             map((v) => v .map((profesores) => 
         ({...profesores, name: profesores.name.toUpperCase(),
                  apellido: profesores.apellido.toUpperCase(),
            
-    })))
+    }))) 
     );
         
     }

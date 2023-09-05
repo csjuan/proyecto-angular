@@ -6,6 +6,7 @@ import { Observable, map } from 'rxjs';
 import { cursos } from '.';
 
 
+
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
@@ -13,19 +14,20 @@ import { cursos } from '.';
 })
 export class CursosComponent {
     public cursos: Observable<cursos[]>;
-
+    
 
 
     constructor(
         private MatDialog: MatDialog,
-        private cursosService: CursosService
-    ) {
-        this.cursosService.cargarProfesor();
+        private cursosService: CursosService,
+        
+    ) { 
+        this.cursosService.cargarCurso();
         this.cursos = this.cursosService.getcurso().pipe(
             map((v) => v .map((cursos) => 
-        ({...cursos, curso: cursos.curso.toUpperCase(),
-        duracion: cursos.duracion.toUpperCase(),
-        dificultad: cursos.dificultad,
+        ({...cursos, 
+            curso: cursos.curso,
+            duracion: cursos.duracion,
     })))
     );
     }
@@ -35,9 +37,8 @@ export class CursosComponent {
         next: (v) => {
             this.cursosService.crearCurso({
                 curso: v.cursos,
-                duracion: v.duracion,
-                dificultad: v.dificultad,      
-       })
+                duracion: v.duracion,      
+          })
         },
      });
              

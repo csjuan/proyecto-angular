@@ -9,15 +9,13 @@ import { cursos } from '..';
   styleUrls: ['./crear-curso.component.scss']
 })
 export class CrearCursoComponent {
-         editarCursos?: cursos
-    controlcurso = new FormControl<string>('', [Validators.required]);
-    controlduracion = new FormControl<string>('', [Validators.required]);
-    controldificultad = new FormControl<string>('', Validators.required);
+        editarCursos?: cursos
+        controlcurso = new FormControl<string>('', [Validators.required]);
+        controlduracion = new FormControl<string>('', [Validators.required]);
     
-    cursosform = new FormGroup({
-      curso: this.controlcurso,
-      duracion: this.controlduracion,
-      dificultad: this.controldificultad,
+        cursosform = new FormGroup({
+        curso: this.controlcurso,
+        duracion: this.controlduracion,
     });
 
     constructor(private dialogRef: MatDialogRef<CrearCursoComponent>,
@@ -26,8 +24,7 @@ export class CrearCursoComponent {
             if (this.data) {
                 this.editarCursos = this.data;
                 this.controlcurso.setValue(this.data.curso);
-                this.controlduracion.setValue(this.data.duracion);
-                this.controldificultad.setValue(this.data.dificultad);   
+                this.controlduracion.setValue(this.data.duracion);   
             }
         }
 

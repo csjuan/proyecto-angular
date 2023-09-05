@@ -7,7 +7,7 @@ import { cursos } from '..';
   styleUrls: ['./tabla-curso.component.scss']
 })
 export class TablaCursoComponent {
-    displayedColumns: string[] = ['id', 'curso', 'duracion', 'dificultad', 'editar',];
+    displayedColumns: string[] = ['id', 'curso', 'duracion', 'editar',];
     @Input()
     dataSource: cursos[] = [];
 

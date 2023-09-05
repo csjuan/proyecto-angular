@@ -2,9 +2,11 @@
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <mat-nav-list>
        <a routerLink="home" mat-list-item>Home</a>
-       <a routerLink="cursos" mat-list-item>Cursos</a>
+       <a *ngIf="(selecAdmin| async)" routerLink="users" mat-list-item>Usuarios</a>
        <a routerLink="profesores" mat-list-item>Profesores</a>
-       <a routerLink="users" mat-list-item>Alumnos</a>
+       <a routerLink="alumnos" mat-list-item>Alumnos</a>
+       <a routerLink="cursos" mat-list-item>Cursos</a>
+       <a routerLink="clases" mat-list-item>Clases</a>
        <a (click)="logout()" mat-list-item>Salir</a>
       </mat-nav-list>
     </mat-drawer>
@@ -15,8 +17,9 @@
               <mat-icon>menu</mat-icon>
             </button>
             <span class="example-spacer"></span>
+            {{ (userauth$ | async)?.name}} {{(userauth$ | async)?.apellido}}
           </mat-toolbar>
-          <main>
+          <main>  
             <router-outlet></router-outlet>
           </main>
     </div>

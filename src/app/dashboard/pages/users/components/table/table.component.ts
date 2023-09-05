@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output, } from '@angular/core';
-import { alumnos } from '../modelos/index';
+import { user } from '../modelos';
 
 
 
+  
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -11,12 +12,12 @@ import { alumnos } from '../modelos/index';
 export class TableComponent {
     displayedColumns: string[] = ['id', 'pipe', 'direccion', 'email', 'edit',];
     @Input()
-    dataSource: alumnos[] = [];
+    dataSource: user[] = [];
     
     @Output()
-    quitaralumno = new EventEmitter<alumnos>();
+    quitarUser = new EventEmitter<user>();
 
     @Output()
-    editalumno = new EventEmitter<alumnos>();
+    editarUser = new EventEmitter<user>();
 
 }

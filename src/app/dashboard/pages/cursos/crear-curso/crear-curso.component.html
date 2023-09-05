@@ -7,19 +7,14 @@
                 <input formControlName="curso" matInput type="text" name="curso"/> 
             </mat-form-field>
         </div>    
+
         <div class="col">
-            <mat-form-field  appearance="outline">
+            <mat-form-field appearance="outline" >
                 <mat-label>duracion</mat-label>
                 <input formControlName="duracion" matInput type="text" name="duracion"/> 
-            </mat-form-field> 
-        </div> 
-        <div class="col">
-            <mat-form-field  appearance="outline">
-                <mat-label>dificultad</mat-label>
-                <input formControlName="dificultad" matInput type="text" name="dificultad"/> 
-            </mat-form-field> 
-        </div>     
-          
+            </mat-form-field>
+        </div>    
+
         <div>
             <button (click)="onSubmit()" mat-button color="basic" type="button">
                 Guardar

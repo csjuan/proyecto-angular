@@ -1,32 +1,40 @@
 import { Injectable } from '@angular/core';
-import { alumnos, data } from '../../dashboard/pages/users/components/modelos';
 import { BehaviorSubject, Subject, map, mergeMap,  take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { randomString } from 'src/app/shared/utils/randomToken';
+import { data, user } from 'src/app/dashboard/pages/users/components/modelos';
+import { environment } from 'src/environments/environment';
+
+
+
+
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-    private _usuarios$ = new BehaviorSubject<alumnos[]>([]);
+    private _usuarios$ = new BehaviorSubject<user[]>([]);
     private usuarios$ = this._usuarios$.asObservable();
 
   constructor(private httpClient: HttpClient) { }
 
   cargarUsuarios(): void {
-    this.httpClient.get<alumnos[]>('http://localhost:3000/alumnos').subscribe({
+    this.httpClient.get<user[]>(environment.baseUrl+'/user').subscribe({
         next:(respuesta) => {
             this._usuarios$.next(respuesta);
         } 
     })
   }
 
-  getAlumno(): Subject<alumnos[]>{
+  getuser(): Subject<user[]>{
     return this._usuarios$;
   }
 
-  crearUsuario( alumno: data): void{
-   this.httpClient.post<alumnos>('http://localhost:3000/alumnos', alumno).pipe(
+  crearUsuario( users:data): void{
+    const token = randomString(10);
+   this.httpClient.post<user>(environment.baseUrl+'/user', {...users, token}).pipe(
     mergeMap(usuarioCreado =>  this.usuarios$.pipe(
         take(1),
         map((arrayActual) => [...arrayActual, usuarioCreado])
@@ -39,14 +47,14 @@ export class UsersService {
    })
   }
 
-  EditUser(id:number, NewData: alumnos): void{
-    this.httpClient.put('http://localhost:3000/alumnos/' + id, NewData)
+  EditUser(id:number, NewData: user): void{
+    this.httpClient.put(environment.baseUrl+'/user/' + id, NewData)
      .subscribe({ next:() => this.cargarUsuarios(),
    })
   }
 
-  BorrarUser(id: number):void    {
-    this.httpClient.delete('http://localhost:3000/alumnos/' + id)
+  BorrarUser(id: number):void {
+    this.httpClient.delete(environment.baseUrl+'/user/' + id)
     .pipe()
      .subscribe({ next:() => this.cargarUsuarios(),
    })

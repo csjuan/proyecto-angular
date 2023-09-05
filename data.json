@@ -1,46 +1,174 @@
 {
-  "alumnos": [
+  "user": [
     {
       "name": "JOSE",
       "apellido": "GAUNA",
       "direccion": "COLON 237",
       "email": "gauna@gmail.com",
       "password": "451f51dvb2",
+      "token": "hcsasd44hj",
+      "rol": "Usuario",
       "id": 1
     },
     {
-      "id": 2,
       "name": "marcos",
       "apellido": "peña",
       "direccion": "charcas 237",
       "email": "marpeña@gmail.com",
-      "password": "gfdg654745"
+      "password": "123",
+      "token": "hcsasdfghj",
+      "rol": "Usuario",
+      "id": 2
     },
     {
-      "id": 3,
       "name": "rodrigo",
       "apellido": "sanchez",
       "direccion": "alem 765",
       "email": "rosanchez@gmail.com",
-      "password": "jskcyhfdc5"
+      "password": "jskcyhfdc5",
+      "token": "dfghjklthh",
+      "rol": "Usuario",
+      "id": 3
     },
     {
-      "id": 4,
-      "name": "alberto",
-      "apellido": "bocetti",
+      "name": "ALBERTO",
+      "apellido": "BOCETTI",
       "direccion": "lima 125",
       "email": "bocetti@gmail.com",
-      "password": "jkcvasicvbn"
+      "password": "456",
+      "token": "dfghjk11hh",
+      "rol": "Usuario",
+      "id": 4
     },
     {
       "name": "JUAN",
-      "apellido": "bernabey",
+      "apellido": "BERNABEY",
       "direccion": "SALTA 369",
       "email": "juan@gmail.com",
+      "token": "dfghj551hh",
+      "rol": "Administrador",
       "password": "123",
       "id": 5
     }
   ],
-  "profesores": [],
-  "cursos": []
+  "profesores": [
+    {
+      "name": "juan",
+      "apellido": "gomez",
+      "direccion": "alem 267",
+      "email": "gomez@gmail.com",
+      "password": "451sdv",
+      "id": 1
+    },
+    {
+      "name": "marcos",
+      "apellido": "moon",
+      "direccion": "lima 985",
+      "email": "moon@gmail.com",
+      "password": "gfdg654967",
+      "id": 2
+    },
+    {
+      "name": "ricardo",
+      "apellido": "sanchez",
+      "direccion": "libertad 565",
+      "email": "sanchez@gmail.com",
+      "password": "jskcyhfdc5",
+      "id": 3
+    },
+    {
+      "name": "alberto",
+      "apellido": "bocetti",
+      "direccion": "lima 125",
+      "email": "bocetti@gmail.com",
+      "password": "jkcvasicvbn",
+      "id": 4
+    }
+  ],
+  "alumnos": [
+    {
+      "name": "cristian",
+      "apellido": "Gauna",
+      "direccion": "COLON 237",
+      "email": "gauna@gmail.com",
+      "password": "451f51dvb2",
+      "token": "sasdfghjkl",
+      "id": 1
+    },
+    {
+      "name": "marcelo",
+      "apellido": "peña",
+      "direccion": "charcas 237",
+      "email": "marpeña@gmail.com",
+      "password": "gfdg654745",
+      "token": "hcmmsdfghj",
+      "id": 2
+    },
+    {
+      "name": "manuel",
+      "apellido": "sanchez",
+      "direccion": "alem 765",
+      "email": "rosanchez@gmail.com",
+      "password": "jskcylldc5",
+      "token": "dfghj11thh",
+      "id": 3
+    },
+    {
+      "name": "lautaro",
+      "apellido": "bocetti",
+      "direccion": "lima 125",
+      "email": "bocetti@gmail.com",
+      "password": "jkcvasicvbn",
+      "token": "ghjbfd0099",
+      "id": 4
+    },
+    {
+      "name": "matias",
+      "apellido": "gauna",
+      "direccion": "SALTA 369",
+      "email": "gauna@gmail.com",
+      "password": "123",
+      "token": "ghjbhhbdkl",
+      "id": 5
+    }
+  ],
+  "cursos": [
+    {
+      "curso": "diseño grafico",
+      "duracion": "4 semanas",
+      "id": 1
+    },
+    {
+      "curso": "HTML",
+      "duracion": "6 semanas",
+      "id": 2
+    },
+    {
+      "curso": "PHYTON",
+      "duracion": "9 semanas",
+      "id": 3
+    },
+    {
+      "curso": "java",
+      "duracion": "4 semanas",
+      "id": 4
+    }
+  ],
+  "clases": [
+    {
+      "id": 1,
+      "cursoId": 2,
+      "alumnoId": 1
+    },
+    {
+      "id": 1,
+      "cursoId": 1,
+      "alumnoId": 3
+    },
+    {
+      "id": 1,
+      "cursoId": 4,
+      "alumnoId": 5
+    }
+  ]
 }

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UsersCrearUsuarioComponent } from './components/users-crear-usuario/users-crear-usuario.component';
-import { alumnos } from './components/modelos/index';
 import { UsersService } from 'src/app/core/services/users.service';
 import { Observable, map } from 'rxjs';
+import { user } from './components/modelos';
 
 
 @Component({
@@ -12,17 +12,17 @@ import { Observable, map } from 'rxjs';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent {
-   public alumnos: Observable<alumnos[]>;
+   public usuarios: Observable<user[]>;
 
     constructor (   private matDialog: MatDialog,
         private userService: UsersService
    ) {
     this.userService.cargarUsuarios();
-    this.alumnos = this.userService.getAlumno().pipe(
-        map((v) => v .map((alumnos) => 
-        ({...alumnos, name: alumnos.name.toUpperCase(),
-        apellido: alumnos.apellido.toUpperCase(),
-        direccion: alumnos.direccion.toUpperCase(),
+    this.usuarios = this.userService.getuser().pipe(
+        map((v) => v .map((users) => 
+        ({...users, name: users.name.toUpperCase(),
+        apellido: users.apellido.toUpperCase(),
+        direccion: users.direccion
     })))
     );
    }
@@ -35,22 +35,23 @@ export class UsersComponent {
                     apellido: valor.apellido,
                     direccion: valor.direccion,
                     email: valor.email,
+                    rol: valor.rol,
                     password: valor.password,
            })
     }
         },       
    });
    } 
-   Borraralumno(borraralumno: alumnos): void {
-    if(confirm(`desea eliminar a ${borraralumno.name}?`)){
-      this.userService.BorrarUser(borraralumno.id) ;
+   BorrarUser(borrarUser: user): void {
+    if(confirm(`desea eliminar a ${borrarUser.name}?`)){
+      this.userService.BorrarUser(borrarUser.id) ;
     }
 }
-    editaralumno(editaralumno: alumnos): void{
-      this.matDialog.open(UsersCrearUsuarioComponent , {data: editaralumno}).afterClosed().subscribe({
-           next: (alumnoeditado) => {
-              if (alumnoeditado) {
-                this.userService.EditUser(editaralumno.id, alumnoeditado)
+    editarUser(editarUser: user): void{
+      this.matDialog.open(UsersCrearUsuarioComponent , {data: editarUser}).afterClosed().subscribe({
+           next: (usereditado) => {
+              if (usereditado) {
+                this.userService.EditUser(editarUser.id, usereditado)
               }
             },       
           });

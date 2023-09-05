@@ -13,7 +13,7 @@ export class CrearProfesorComponent {
     controlnombre = new FormControl<string>('', [Validators.required]);
     controlapellido = new FormControl<string>('', [Validators.required]);
     controldireccion = new FormControl<string>('', Validators.required);
-    controlemail = new FormControl<string>('', [Validators.required]);
+    controlemail = new FormControl<string>('', [Validators.required, Validators.email]);
     controlpassword = new FormControl<string>('', [Validators.required]);
    
     profesorform = new FormGroup({

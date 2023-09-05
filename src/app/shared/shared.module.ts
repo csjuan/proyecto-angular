@@ -13,6 +13,7 @@ import { PipePipe } from './pipes/pipe.pipe';
 import { ErrorPipe } from './pipes/error.pipe';
 import { FontDirective } from './directiva/font.directive';
 import { MatListModule } from '@angular/material/list';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     PipePipe,
@@ -36,6 +37,7 @@ import { MatListModule } from '@angular/material/list';
     ErrorPipe,
     FontDirective,
     MatListModule,
+    MatSelectModule,
     
   ]
 })

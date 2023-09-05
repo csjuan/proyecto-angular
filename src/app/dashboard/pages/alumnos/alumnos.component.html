@@ -1,0 +1,10 @@
+
+<button (click)="crearAlumno()" mat-fab extended color="primary" >
+    + Alumnos
+  </button>
+  <app-tabla
+  [dataSource]="(alumno | async) || []"
+  (quitarAlumno)="borrarAlumno($event)"
+  (editarAlumno)="editarAlumno($event)">
+  >
+</app-tabla>
